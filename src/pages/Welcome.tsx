@@ -7,7 +7,7 @@ type Welcome = {
 }
 // const [isLogin, setIsLogin] = useState(false)
 export const Welcome: React.FC<Welcome> = styled.div`
-t    width: 30%;
+    width: 30%;
     display: flex;
     height: 7em;
     color:gold;
@@ -16,4 +16,5 @@ t    width: 30%;
     justify-content: center;
     border-radius: 12px;
     margin: 10px;
+    padding: 10px;
 `

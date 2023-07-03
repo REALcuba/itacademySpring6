@@ -4,6 +4,7 @@ const StyledPrevForwardBtn = styled.button`
 color:red;
 width: 50%;
 height: 2.6rem;
+marging:10px;
 `
 
 type BotonesProps = {

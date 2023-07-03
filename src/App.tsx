@@ -1,13 +1,15 @@
 import { useState } from 'react'
-import './App.css'
 import { Escena } from './components/escena/Escena'
-import { Welcome } from './pages/welcome';
+import { Welcome } from './pages/Welcome';
 import phraseArray from './assets/PhrasesArray'
 import PrevForwardBtn from './components/prevForwardBtn/PrevForwardBtn'
+import { BodyContainer } from './components/bodyContainer/BodyContainer'
 
 function App() {
   const [isLogin, setIsLogin] = useState(false)
   const [currentIndex, setcurrentIndex] = useState(0)
+  const currentFrase = phraseArray[currentIndex]
+
   const handlePrevious = () => {
     setcurrentIndex(currentIndex => currentIndex === 0 ? phraseArray.length - 1 : currentIndex - 1);
 
@@ -23,28 +25,19 @@ function App() {
   if (!isLogin) {
     return (
       <>
-        <Welcome isLogin={isLogin} >Pequeña web de frases</Welcome>
+        <Welcome isLogin={isLogin} >Pequeña web de frases con cambios en el fondo, usando la imagen propia de la frase</Welcome>
         <button onClick={handleLogin}>Login</button>
       </>
     )
   } else {
-    return (<>
+    return (
+      <BodyContainer backgroundimage={currentFrase} >
       <PrevForwardBtn handlePrevious={handlePrevious} handleNext={handleNext} />
       <Escena arr={phraseArray} currentIndex={currentIndex} />
-    </>)
+      </BodyContainer >)
   }
 
-  // return (
-  //   <>
-  //     if(isLogin){
-  //       <Welcome />
-  //     }else{
-  //       <>
-  //     <PrevForwardBtn handlePrevious={handlePrevious} handleNext={handleNext} />
-  //     <Escena arr={phraseArray} currentIndex={currentIndex} />
-  //       </>}
-  //   </>
-  // )
+
 }
 
 export default App;
