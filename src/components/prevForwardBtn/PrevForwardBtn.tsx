@@ -5,6 +5,11 @@ color:red;
 width: 50%;
 height: 2.6rem;
 marging:10px;
+
+&:hover {
+    color:black;
+    border: 2px solid black ;
+}
 `
 
 type BotonesProps = {
