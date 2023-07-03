@@ -1,24 +1,33 @@
-// import React from 'react'
-// import  {phraseArray} from "../../assets/PhrasesArray";
+import styled from 'styled-components'
 
-// type arr={arr:string}
-type arr={arr:string[]}
-const Escena = (props:arr) => {
-  console.log(props.arr);
+const StyledEscena = styled.div < { isactive: boolean } > `
+/* color:#BF4F74; */
+border-radius: 2rem;
+border:1px black solid;
+padding:10px;
+margin:10px;
+display:flex;
+justify-content:center;
+background: ${({ isactive }) => (isactive ? 'yellow' : 'white')};
+`
+type Escena = {
+  arr: string[],
+  currentIndex: number
+}
+
+export const Escena: React.FC<Escena> = ({ arr, currentIndex }) => {
   
   return(
     <ul>
-        {
-         props.arr.map((frase)=> 
-                (<li>
+      {
+        arr.map((frase, index) =>
+        (<StyledEscena key={index} isactive={currentIndex === index}  >
                 {frase}
-                </li>
+        </StyledEscena >
             )
             )
 
-        }
+      }
     </ul>
   )
 }
-
-export default Escena
